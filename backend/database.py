@@ -1,21 +1,28 @@
 import mysql.connector
 import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+DB_HOST = os.getenv("DB_HOST")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root",
-        database="hcp_crm_db"
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD,
+        database=DB_NAME
     )
 
 
 def init_db():
     conn = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="root"
+        host=DB_HOST,
+        user=DB_USER,
+        password=DB_PASSWORD
     )
     cursor = conn.cursor()
     cursor.execute("CREATE DATABASE IF NOT EXISTS hcp_crm_db")
