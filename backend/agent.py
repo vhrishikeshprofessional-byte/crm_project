@@ -6,7 +6,10 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, SystemMessage
 from database import get_db_connection
 
-GROQ_API_KEY = "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"
+from dotenv import load_dotenv
+load_dotenv()
+ 
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 JSON_FILE = "interaction_state.json"
 
 primary_llm = ChatGroq(api_key=GROQ_API_KEY, model_name="llama-3.1-8b-instant", temperature=0.1)
