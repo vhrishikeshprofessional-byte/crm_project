@@ -158,8 +158,8 @@ CREATE TABLE interactions (
     follow_ups JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
+### CONFIGURATION
 
-## CONFIGURATION
 
 | Setting | Value |
 |---------|-------|
@@ -173,4 +173,4 @@ CREATE TABLE interactions (
 | Temp JSON | interaction_state.json |
 | Backend Port | 8000 |
 | Frontend Port | 3000 |
-##
+---
