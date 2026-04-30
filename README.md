@@ -158,7 +158,7 @@ CREATE TABLE interactions (
     follow_ups JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
-### CONFIGURATION
+## CONFIGURATION
 
 
 | Setting | Value |
