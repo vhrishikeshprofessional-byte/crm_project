@@ -1,28 +1,30 @@
 # HCP CRM – AI-First Interaction Logger
-Full-stack AI CRM for life science field reps. LangGraph + Groq + FastAPI + React + MySQL.
+
+Full-stack AI CRM for life science field reps using LangGraph, Groq, FastAPI, React, and MySQL.
+
 ---
 
-## PROJECT STRUCTURE
+# PROJECT STRUCTURE
 
-```
+```text
 crm_project/
 ├── backend/
-│   ├── main.py              ← FastAPI routes
-│   ├── agent.py             ← LangGraph agent + 5 tools
-│   ├── database.py          ← MySQL integration
-│   ├── requirements.txt     ← Python dependencies
-│   └── interaction_state.json  ← Auto-created at runtime
+│   ├── main.py                  ← FastAPI routes
+│   ├── agent.py                 ← LangGraph agent + 5 tools
+│   ├── database.py              ← MySQL integration
+│   ├── requirements.txt         ← Python dependencies
+│   └── interaction_state.json   ← Auto-created at runtime
 │
 └── frontend/
     ├── public/
     │   └── index.html
     ├── src/
-    │   ├── index.js         ← React entry point
-    │   ├── index.css        ← Global styles (Inter font)
-    │   ├── App.js           ← Split-screen layout
+    │   ├── index.js             ← React entry point
+    │   ├── index.css            ← Global styles (Inter font)
+    │   ├── App.js               ← Split-screen layout
     │   ├── App.css
-    │   ├── store.js         ← Redux store
-    │   ├── api.js           ← Axios API calls
+    │   ├── store.js             ← Redux store
+    │   ├── api.js               ← Axios API calls
     │   └── components/
     │       ├── Header.js / Header.css
     │       ├── InteractionForm.js / InteractionForm.css
@@ -32,9 +34,9 @@ crm_project/
 
 ---
 
-## ARCHITECTURE DIAGRAM
+# ARCHITECTURE DIAGRAM
 
-```
+```text
 User (Chat Input)
       │
       ▼
@@ -71,16 +73,17 @@ interaction_state.json (temp)                                      │
 
 ---
 
-## SETUP – STEP BY STEP
+# SETUP – STEP BY STEP
 
-### PREREQUISITES
-- Python 3.10+
-- Node.js 18+
-- MySQL running on localhost (root / root)
+## PREREQUISITES
+
+* Python 3.10+
+* Node.js 18+
+* MySQL running on localhost (`root / root`)
 
 ---
 
-### STEP 1 – Backend Setup
+# STEP 1 – Backend Setup
 
 ```bash
 # Go to backend folder
@@ -92,6 +95,7 @@ python -m venv venv
 # Activate it
 # Windows:
 venv\Scripts\activate
+
 # Mac/Linux:
 source venv/bin/activate
 
@@ -103,14 +107,15 @@ uvicorn main:app --reload --port 8000
 ```
 
 The server will:
-- Auto-create the MySQL database `hcp_crm_db`
-- Auto-create the `interactions` table
-- Be accessible at: http://localhost:8000
-- Swagger docs at: http://localhost:8000/docs
+
+* Auto-create the MySQL database `hcp_crm_db`
+* Auto-create the `interactions` table
+* Be accessible at: `http://localhost:8000`
+* Swagger docs at: `http://localhost:8000/docs`
 
 ---
 
-### STEP 2 – Frontend Setup
+# STEP 2 – Frontend Setup
 
 ```bash
 # Go to frontend folder
@@ -123,24 +128,25 @@ npm install
 npm start
 ```
 
-App runs at: http://localhost:3000
+App runs at: `http://localhost:3000`
 
 ---
 
-## API REFERENCE
+# API REFERENCE
 
-## LANGGRAPH AGENT – 5 TOOLS
+# LANGGRAPH AGENT – 5 TOOLS
 
-| Tool | Model | Purpose |
-|------|-------|---------|
-| `log_interaction_tool` | gemma2-9b-it | Extract structured CRM fields from natural language |
-| `edit_interaction_tool` | llama-3.3-70b-versatile | Patch specific fields based on edit instructions |
-| `get_all_log` | — | Read all the SQL logs |
-| `validate_interaction_tool` | — | Check required fields, return missing |
-| `suggest_followup_tool` | llama-3.3-70b-versatile | Generate AI follow-up action suggestions |
+| Tool                        | Model                     | Purpose                                             |
+| --------------------------- | ------------------------- | --------------------------------------------------- |
+| `log_interaction_tool`      | `gemma2-9b-it`            | Extract structured CRM fields from natural language |
+| `edit_interaction_tool`     | `llama-3.3-70b-versatile` | Patch specific fields based on edit instructions    |
+| `get_all_log`               | —                         | Read all the SQL logs                               |
+| `validate_interaction_tool` | —                         | Check required fields and return missing fields     |
+| `suggest_followup_tool`     | `llama-3.3-70b-versatile` | Generate AI follow-up action suggestions            |
 
+---
 
-## MYSQL TABLE SCHEMA
+# MYSQL TABLE SCHEMA
 
 ```sql
 CREATE TABLE interactions (
@@ -157,22 +163,24 @@ CREATE TABLE interactions (
     outcomes TEXT,
     follow_ups JSON,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 
 ---
 
+# CONFIGURATION
 
-## CONFIGURATION
-
-| Setting | Value |
-|---------|-------|
-| Groq API Key | gsk_d2I2R0HJ... |
-| Primary Model | gemma2-9b-it |
+| Setting         | Value                   |
+| --------------- | ----------------------- |
+| Groq API Key    | gsk_d2I2R0HJ...         |
+| Primary Model   | gemma2-9b-it            |
 | Reasoning Model | llama-3.3-70b-versatile |
-| MySQL Host | localhost |
-| MySQL User | root |
-| MySQL Password | root |
-| Database | hcp_crm_db |
-| Temp JSON | interaction_state.json |
-| Backend Port | 8000 |
-| Frontend Port | 3000 |
+| MySQL Host      | localhost               |
+| MySQL User      | root                    |
+| MySQL Password  | root                    |
+| Database        | hcp_crm_db              |
+| Temp JSON       | interaction_state.json  |
+| Backend Port    | 8000                    |
+| Frontend Port   | 3000                    |
+
 ---
