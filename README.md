@@ -1,6 +1,5 @@
 # HCP CRM – AI-First Interaction Logger
-
-Full-stack AI CRM for life science field reps using LangGraph, Groq, FastAPI, React, and MySQL.
+Full-stack AI CRM for life science field reps. LangGraph + Groq + FastAPI + React + MySQL.
 
 ---
 
