@@ -1,0 +1,38 @@
+.app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.split-screen {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  gap: 0;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.left-panel {
+  flex: 1.1;
+  border-right: 1.5px solid var(--border);
+}
+
+.right-panel {
+  flex: 0.9;
+}
+
+.panel-divider {
+  width: 0;
+}
+
+@media (max-width: 900px) {
+  .split-screen { flex-direction: column; }
+  .left-panel { border-right: none; border-bottom: 1.5px solid var(--border); }
+}

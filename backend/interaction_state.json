@@ -1,0 +1,21 @@
+{
+  "hcp_name": "Dr. Priya Patel",
+  "interaction_type": "Visit",
+  "date": "2024-05-01",
+  "time": "10:00",
+  "attendees": [
+    "You"
+  ],
+  "topics_discussed": "New treatment options for diabetes",
+  "materials_shared": [
+    "Product brochure"
+  ],
+  "samples_distributed": [
+    "Sample pack for diabetes treatment"
+  ],
+  "sentiment": "Neutral",
+  "outcomes": "Scheduled follow-up meeting for 2 weeks",
+  "follow_ups": [
+    "Follow-up meeting in 2 weeks to discuss patient progress"
+  ]
+}
